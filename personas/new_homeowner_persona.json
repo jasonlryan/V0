@@ -1,0 +1,104 @@
+{
+    "New Homeowner": {
+      "Needs": {
+        "Maintenance": "Regular upkeep: HVAC, plumbing, landscaping",
+        "Security": "Changing locks, setting up security systems",
+        "Budgeting": "Budgeting for unexpected expenses: repairs, maintenance",
+        "Home Improvement": "Customizing and renovating the home",
+        "Insurance": "Comprehensive homeowners insurance"
+      },
+      "Motivations": {
+        "Financial Security": "Long-term stability, equity growth",
+        "Personalization": "Making the home reflect their style",
+        "Privacy and Independence": "Freedom from landlords",
+        "Pride of Ownership": "Sense of accomplishment, desire to care for home"
+      },
+      "Behaviors": {
+        "Research-heavy Decision-making": "Research on renovations, contractors, etc.",
+        "Gradual Approach to Improvements": "Prioritizing projects over time",
+        "Establishing Maintenance Routines": "Air filters, gutters, regular checks"
+      },
+      "Frustrations / Pain Points": {
+        "Unexpected Repairs": "Costly repairs like HVAC or leaks",
+        "Decision Paralysis": "Overwhelming choices for home projects",
+        "Financial Complexity": "Managing mortgage, insurance, and taxes",
+        "Reliable Service Providers": "Difficulty finding trustworthy contractors"
+      },
+      "User Goal Statement": "As a new homeowner, I want to create a safe, comfortable, and functional home while maintaining control over my budget. I aim to learn how to efficiently manage home maintenance and improvements, ensuring that my investment grows in value over time and that I’m prepared for any unexpected challenges.",
+      "Key Responsibilities": {
+        "Managing and Maintaining Home": "Daily upkeep, repairs, and improvements",
+        "Home Improvement Tasks": "Handling both DIY and contractor projects",
+        "Budgeting": "Managing mortgage, taxes, and insurance costs",
+        "Making Decisions": "Choosing furniture, appliances, and renovation plans",
+        "Legal Responsibilities": "Understanding HOA rules, local ordinances"
+      },
+      "Knowledge or Expertise": {
+        "Home Maintenance": "Plumbing, electrical, landscaping basics",
+        "Mortgage and Insurance Policies": "Understanding financial commitments",
+        "Contractor Research": "Finding and evaluating service providers",
+        "Home Safety": "Setting up security systems and smoke detectors",
+        "Energy Management": "Reducing energy consumption and managing bills"
+      },
+      "Typical Challenges": {
+        "Balancing Improvements with Budget": "Managing large expenses alongside home improvements",
+        "Overwhelming Choices": "Navigating décor, renovations, and home systems",
+        "Unexpected Repairs": "Handling sudden breakdowns and urgent repairs",
+        "Understanding Financial Documents": "Interpreting mortgage and insurance policies",
+        "Adjusting to Financial Responsibilities": "Handling new home-related expenses"
+      },
+      "Current Projects": {
+        "Room Renovations": "E.g., kitchen, bathroom",
+        "Security Systems": "Setting up smart home or security systems",
+        "Landscaping": "Improving outdoor spaces",
+        "Organizing": "Furnishing and organizing the home",
+        "Maintenance Schedule": "Developing long-term home maintenance plans"
+      },
+      "Jargon or Terminology": {
+        "Mortgage": ["Escrow", "Property Tax", "Interest Rate"],
+        "HOA": "Homeowners Association",
+        "Mortgage Types": ["Fixed vs. Adjustable Rate Mortgage (ARM)"],
+        "Home Financials": ["Home Equity", "PMI", "Amortization", "Refinance"],
+        "Home Systems": ["Energy Efficiency", "Smart Home Devices", "HVAC"],
+        "Real Estate": "Curb Appeal"
+      },
+      "Goals and Objectives": {
+        "Comfortable Living": "Creating a functional and aesthetic living space",
+        "Home Value Protection": "Maintaining and improving property value",
+        "Routine Maintenance": "Avoiding costly repairs through regular upkeep",
+        "Equity Building": "Building financial equity over time",
+        "Confidence in Ownership": "Reducing stress and managing responsibilities effectively"
+      },
+      "Interactions": {
+        "Contractors": "Collaborating with service providers and contractors",
+        "Neighbors": "Engaging with neighbors, especially in HOAs",
+        "Homeowner Forums": "Seeking advice from experienced homeowners",
+        "Financial Institutions": "Interacting with mortgage companies and insurance providers"
+      },
+      "Tone and Formality": "Practical, friendly, and approachable. Prefers straightforward, non-technical explanations.",
+      "Level of Detail": "Clear and concise instructions, especially for DIY projects. Actionable steps preferred over theory.",
+      "Preferred References": {
+        "Home Improvement Blogs": "Sources for DIY projects",
+        "Online Reviews": "For contractors and smart home devices",
+        "Financial Advice": "Homeowner’s insurance and financial advice sites",
+        "Real Estate Trends": "Keeping track of market and property values"
+      },
+      "Examples or Analogies": {
+        "Maintenance as a Car": "Regular upkeep avoids bigger problems",
+        "Appliances as Tools": "Choose ones that fit your needs for long-term efficiency"
+      },
+      "Avoidance of Ambiguity": "Prefers straightforward guidance without jargon. Clear timelines and costs are crucial.",
+      "Resource Links": {
+        "Home Improvement Ideas": "Links to budget-friendly renovation ideas",
+        "How-to Videos": "Videos for maintenance and DIY tasks",
+        "Comparison Tools": "For mortgage rates, warranties, etc."
+      },
+      "Promptness": "Timely responses are essential, especially for urgent repairs or large projects.",
+      "Collaborative Approach": "Seeks recommendations and is open to professional advice. Prefers transparency and collaboration.",
+      "Follow Up Questions": "Often has queries on cost estimates, timelines, and finding reliable service providers.",
+      "Problem Solving Method": {
+        "Research and Consultation": "Uses a mix of self-research and professional input",
+        "Pragmatic Approach": "Solves issues step by step, prioritizing urgent repairs"
+      }
+    }
+  }
+  

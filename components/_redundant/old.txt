@@ -1,0 +1,188 @@
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ChatMessage, SystemTag, Note } from "@/types";
+import { addNote } from "@/store/slices";
+import { v4 as uuidv4 } from "uuid";
+import { useAuth } from "@/hooks/useAuth";
+
+// Test response generator
+const getTestResponse = (query: string): ChatMessage => ({
+  id: uuidv4(),
+  text: `This is a test response to: "${query}"\n\nThe AI assistant is not connected yet. This would be an intelligent response about your property.`,
+  sender: "ai",
+  timestamp: new Date().toISOString(),
+  canSave: true,
+});
+
+export function ChatInterface() {
+  const dispatch = useDispatch();
+  const { user } = useAuth();
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      id: "1",
+      text: "Welcome to HomeTruth! I'm your trusted AI advisor for all aspects of homeownership. Whether you're buying, selling, or maintaining your home, I'm here to provide accurate, reliable information. How can I assist you today?",
+      sender: "ai",
+      timestamp: new Date().toISOString(),
+      canSave: false,
+    },
+  ]);
+  const [input, setInput] = useState("");
+  const [showSaveModal, setShowSaveModal] = useState(false);
+  const [selectedMessage, setSelectedMessage] = useState<ChatMessage | null>(
+    null
+  );
+  const [noteTitle, setNoteTitle] = useState("");
+  const [selectedTags, setSelectedTags] = useState<SystemTag[]>([]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    // Add user message
+    const userMessage: ChatMessage = {
+      id: uuidv4(),
+      text: input,
+      sender: "user",
+      timestamp: new Date().toISOString(),
+      canSave: false,
+    };
+
+    // Get test response
+    const aiResponse = getTestResponse(input);
+
+    setMessages((prev) => [...prev, userMessage, aiResponse]);
+    setInput("");
+  };
+
+  const handleSaveNote = (message: ChatMessage) => {
+    setSelectedMessage(message);
+    setNoteTitle(`Note about: ${message.text.slice(0, 30)}...`);
+    setSelectedTags([SystemTag.Property]); // Default tag
+    setShowSaveModal(true);
+  };
+
+  const saveNote = () => {
+    if (!selectedMessage) return;
+
+    const note: Note = {
+      id: uuidv4(),
+      title: noteTitle,
+      content: selectedMessage.text,
+      tags: selectedTags,
+      createdAt: new Date().toISOString(),
+      source: "note",
+    };
+
+    dispatch(addNote(note));
+    setShowSaveModal(false);
+    setSelectedMessage(null);
+    setNoteTitle("");
+    setSelectedTags([]);
+  };
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Messages */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((message) => (
+          <div key={message.id} className="flex justify-start">
+            <div
+              className={`max-w-[80%] p-4 rounded-lg ${
+                message.sender === "user"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-100"
+              }`}
+            >
+              <p>{message.text}</p>
+              {message.canSave && (
+                <button
+                  onClick={() => handleSaveNote(message)}
+                  className="mt-2 text-sm text-blue-500 hover:text-blue-700"
+                >
+                  Save Note
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Input */}
+      <form onSubmit={handleSubmit} className="p-4 border-t">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={
+              user
+                ? `${user.name}: `
+                : "Ask HomeTruth anything about homeownership..."
+            }
+            className="flex-1 p-2 border rounded"
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Send
+          </button>
+        </div>
+      </form>
+
+      {/* Save Note Modal */}
+      {showSaveModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg p-6 max-w-md w-full">
+            <h3 className="text-lg font-semibold mb-4">Save as Note</h3>
+            <input
+              type="text"
+              value={noteTitle}
+              onChange={(e) => setNoteTitle(e.target.value)}
+              placeholder="Note title"
+              className="w-full p-2 border rounded mb-4"
+            />
+            <div className="mb-4">
+              <p className="text-sm text-gray-600 mb-2">Select tags:</p>
+              <div className="flex flex-wrap gap-2">
+                {Object.values(SystemTag).map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() =>
+                      setSelectedTags((prev) =>
+                        prev.includes(tag)
+                          ? prev.filter((t) => t !== tag)
+                          : [...prev, tag]
+                      )
+                    }
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      selectedTags.includes(tag)
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-100 text-gray-700"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setShowSaveModal(false)}
+                className="px-4 py-2 text-gray-600 hover:text-gray-800"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={saveNote}
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              >
+                Save Note
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
