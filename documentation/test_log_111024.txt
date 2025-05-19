@@ -1,0 +1,3 @@
+1. need rules for chat. At the moment, the previous chat is persistnet, so when starting the app, the previous chat is stil there. What are the rules for chat persistence?
+2. When clicking Sign In from Home, we go to a dead end login screen. (http://localhost:3000/login) this needs to be added the Modal spec. and treated like the other modals
+3. There is no error handling for invlaid Credentials

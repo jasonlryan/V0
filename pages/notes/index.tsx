@@ -43,8 +43,18 @@ export default function Notes() {
 
   // Filter notes based on selected tag
   const filteredNotes = selectedTag
-    ? notes.filter((note) => note.tags?.includes(selectedTag))
-    : notes;
+    ? notes
+        .map((note) => ({
+          ...note,
+          source: "note" as const,
+          tags: note.tags || [], // Ensure tags is always an array
+        }))
+        .filter((note) => note.tags.includes(selectedTag))
+    : notes.map((note) => ({
+        ...note,
+        source: "note" as const,
+        tags: note.tags || [], // Ensure tags is always an array
+      }));
 
   return (
     <ProtectedRoute>

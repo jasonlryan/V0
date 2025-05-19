@@ -7,7 +7,7 @@ import { FaLock } from "react-icons/fa";
 interface AccessModalProps {
   isOpen: boolean;
   onClose: () => void;
-  type?: "document-vault" | "notes-free" | "notes-limit";
+  type?: "document-vault" | "notes-free" | "notes-limit" | "login";
 }
 
 export function AccessModal({
@@ -44,6 +44,14 @@ export function AccessModal({
       primaryRoute: "/upgrade",
       secondaryAction: "Learn More",
       secondaryRoute: "/upgrade",
+    },
+    "login": {
+      title: "Welcome Back",
+      description: "Log in to continue using HomeTruth",
+      primaryAction: "Log In",
+      primaryRoute: "/api/auth/login",
+      secondaryAction: "Sign Up",
+      secondaryRoute: "/signup"
     },
   };
 

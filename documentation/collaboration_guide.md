@@ -34,9 +34,11 @@
 
 4. **Code Organization**
 
+   - Check @Codebase for existing files before creating new ones
    - Keep folder structure with index.tsx files
    - Maintain clear separation between mock and real implementations
    - Document future implementation plans in comments
+   - Avoid creating duplicate pages/components
 
 5. **Development Priorities**
    - Focus on working mock system first

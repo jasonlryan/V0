@@ -34,9 +34,19 @@ export default function Home() {
     }
   }, []);
 
+  // Only persist if user is logged in
   useEffect(() => {
-    localStorage.setItem("chatMessages", JSON.stringify(messages));
-  }, [messages]);
+    if (user) {
+      localStorage.setItem("chatMessages", JSON.stringify(messages));
+    }
+  }, [messages, user]);
+
+  // Clear chat on logout
+  useEffect(() => {
+    if (!user) {
+      resetChat();
+    }
+  }, [user]);
 
   // Mock AI responses based on keywords
   const getMockResponse = (userInput: string) => {
