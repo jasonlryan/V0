@@ -24,6 +24,10 @@ yarn-error.log*
 
 # Local env files
 .env*.local
+.env
+.env.development
+.env.production
+.env.test
 
 # IDE
 .vscode/
@@ -32,3 +36,13 @@ yarn-error.log*
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# Project specific
+personas/
+
+# Secrets and credentials
+*.key
+*.pem
+*credential*
+*secret*
+config.json
