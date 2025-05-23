@@ -1,6 +1,6 @@
 // Create store configuration
 import { configureStore } from '@reduxjs/toolkit';
-import { authReducer, documentsReducer, notesReducer, insightsReducer } from './slices';
+import { authReducer, documentsReducer, notesReducer } from './slices';
 import { useDispatch as useReduxDispatch } from 'react-redux';
 
 export const store = configureStore({
@@ -8,7 +8,6 @@ export const store = configureStore({
     auth: authReducer,
     documents: documentsReducer,
     notes: notesReducer,
-    insights: insightsReducer,
   },
 });
 

@@ -1,7 +1,6 @@
 export { authReducer } from './authSlice';
 export { documentsReducer } from './documentsSlice';
 export { notesReducer } from './notesSlice';
-export { insightsReducer } from './insightsSlice';
 
 export { 
   setUser, 
@@ -26,11 +25,3 @@ export {
   setLoading as setNotesLoading,
   setError as setNotesError
 } from './notesSlice';
-
-export {
-  setInsights,
-  addInsight,
-  removeInsight,
-  setLoading as setInsightsLoading,
-  setError as setInsightsError
-} from './insightsSlice';
