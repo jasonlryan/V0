@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { KnowledgeItem, SystemTag } from "@/types";
 import { RootState } from "@/store";
 import Link from "next/link";
-import { removeInsight } from "@/store/slices";
+import { removeNote } from "@/store/slices/notesSlice";
 import { FaTrash } from "react-icons/fa";
 import { api } from "@/lib/api";
 
@@ -11,22 +11,23 @@ const systemTags = Object.values(SystemTag);
 
 export function InsightsList() {
   const [selectedTags, setSelectedTags] = useState<SystemTag[]>([]);
-  const { insights, loading, error } = useSelector(
-    (state: RootState) => state.insights
+  const { notes, loading, error } = useSelector(
+    (state: RootState) => state.notes
   );
+  const insights = notes.filter((item: any) => item.type === 'insight');
   const dispatch = useDispatch();
 
   const filteredInsights =
     selectedTags.length > 0
-      ? insights.filter((item) =>
-          item.systemTags.some((tag) => selectedTags.includes(tag))
+      ? insights.filter((item: any) =>
+          (item.systemTags || item.tags)?.some((tag: any) => selectedTags.includes(tag))
         )
       : insights;
 
   const handleDelete = async (id: string) => {
     try {
-      await api.insights.delete(id); // Call API
-      dispatch(removeInsight(id)); // Update state
+      await api.notes.delete(id);
+      dispatch(removeNote(id));
     } catch (error) {
       // Handle error
     }
