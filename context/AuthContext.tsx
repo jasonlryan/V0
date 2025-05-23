@@ -50,6 +50,7 @@ export function AuthProvider({ children }) {
       setIsLoading(true);
       const { user, token } = await api.auth.login(credentials);
       localStorage.setItem("token", token);
+      localStorage.setItem("userRole", user.role); // persist role for reducers
       setLocalUser(user);
       dispatch(setUser(user));
     } catch (err) {
@@ -61,6 +62,7 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
     setLocalUser(null);
     dispatch(clearUser());
   };
